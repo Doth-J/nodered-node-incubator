@@ -1,0 +1,42 @@
+<script type="text/javascript" id="node-topic">
+    RED.nodes.registerType('topic',{
+        category:'exampleCategory',
+        color:'#e2b784',
+        inputs:1,
+        inputLabels: "an input message",
+        outputs:1,
+        outputLabels: "an output message with a topic",
+        defaults: {
+            name: {value:''},
+            topic: {value:''}
+        },
+        label: function(){
+            return this.name || 'topic'
+        }
+    });
+</script>
+<script type="text/html" data-template-name="topic">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-cog"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="Topic" required>
+    </div>
+</script>
+<script type="text/html" data-help-name="topic">
+    <p>Topic Node-RED node</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+    <dt>payload
+        <span class="property-type">string</span>
+    </dt>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+    <dt>payload
+        <span class="property-type">string</span>
+    </dt>
+    <h3>Details</h3>
+    <p>Some more information about the node.</p>
+</script>

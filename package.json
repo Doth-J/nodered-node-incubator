@@ -1,0 +1,31 @@
+{
+  "name": "nodered-node-incubator",
+  "version": "0.0.7",
+  "description": "Node-RED node project incubator",
+  "main": "build/node-incubator.js",
+  "scripts": {
+    "build": "tsc",
+    "refresh":"npm uninstall -g nodered-node-incubator && npm i -g",
+    "site":"npm run build && npm run refresh"
+  },
+  "bin": {
+    "node-inq": "./build/node-incubator.js"
+  },
+  "keywords": [
+    "node-red",
+    "project",
+    "incubator",
+    "typescript"
+  ],
+  "author": "Doth-J",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "@types/prompts": "^2.4.2",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "prompts": "^2.4.2"
+  }
+}
