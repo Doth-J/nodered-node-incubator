@@ -48,6 +48,7 @@ Options:
 It is highly recommened to use `interactive mode` to help you in the project generation process. Following is an example running the command:
 ```console
 node-inq generate --interactive
+√ Enter project directory: ... node-red-contrib-example-project
 √ Enter project author: ... Doth-J
 √ Enter project description: ... Node-RED node generation example
 √ Enter project license: ... ISC
