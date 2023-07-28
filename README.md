@@ -110,5 +110,6 @@ Execute the following command to spin up your incubator server and fast track th
 ```console
 npm run dev
 ```
+Change the `setting.js` file accordingly to your project needs.
 
 ### Have fun developing your nodes! :star:
