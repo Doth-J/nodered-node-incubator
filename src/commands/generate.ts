@@ -85,10 +85,11 @@ export async function generateProject(options:OptionValues){
         Object.assign(module["node-red"].nodes,{template:"nodes/template.js"});
     }
     fs.writeFileSync(path.join(dir,'package.json'),JSON.stringify(module,null,3));
-    console.log(`- Created package.json! ✔️`)
-    if(config.template) console.log(`- Imported template node! 🐣`)
-    fs.writeFileSync(path.join(dir,'.gitignore'),".nodered\nnode_modules\nincubator");
-    fs.writeFileSync(path.join(dir,'.npmignore'),".nodered\nnode_modules\nincubator");
+    console.log(`- Created package.json! ✔️`);
+    if(config.template) console.log(`- Imported template node! 🐣`);
+    const ignore = ".nodered\nnode_modules\nincubator\npackage-lock.json\nnodemon.json";
+    fs.writeFileSync(path.join(dir,'.gitignore'),ignore);
+    fs.writeFileSync(path.join(dir,'.npmignore'),ignore);
     console.log(`- Created .npmignore & .gitignore ✔️`)
     console.groupEnd();
     fs.mkdirSync(path.join(dir,"incubator"));

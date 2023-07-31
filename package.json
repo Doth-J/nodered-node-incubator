@@ -1,6 +1,6 @@
 {
   "name": "nodered-node-incubator",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Node-RED node project incubator",
   "main": "build/node-incubator.js",
   "scripts": {
@@ -11,6 +11,10 @@
   "bin": {
     "node-inq": "./build/node-incubator.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Doth-J/nodered-node-incubator"
+ },
   "keywords": [
     "node-red",
     "project",
