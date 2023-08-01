@@ -55,12 +55,12 @@ node-inq generate --interactive
 √ Generate Typescript project: ... yes
 √ Import template node: ... yes
 
-🥚 Generating Node-RED node project:
+🥚 Generating Node-RED project:
   - Directory: /home/doth/node-red-contrib-example-project ✔️
   - Language set to "Typescript" ✔️
   - Created nodes directory! ✔️
   - Created "package.json"! ✔️
-  - Imported template node! 🐣
+  - Imported example node! 🐣
 
 📕 Node-RED Incubator setup:
   - Installed required modules! ✔️
@@ -101,7 +101,7 @@ node-inq nodes
 
 🐣 Importing incubated Node-RED node(s):
   - Imported multi-out node! 🐥
-  - Imported template node! 🐥
+  - Imported example node! 🐥
   - Imported topic node! 🐥
 ``` 
 
