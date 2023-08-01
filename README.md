@@ -38,9 +38,9 @@ Generate Node-RED node project template 🥚
 Options:
   -i,--interactive           Enable interactive mode (default: false)
   -p, --project <directory>  Project directory
-  -l, --license <type>       Project license (default: "ISC")
+  -l, --license <type>       Project license (default: "MIT")
   -ts, --typescript          Generate typescript project (default: false)
-  -t, --template             Import template node (default: false)
+  -e, --example              Import example node (default: false)
   -h, --help                 display help for command
 ```
 

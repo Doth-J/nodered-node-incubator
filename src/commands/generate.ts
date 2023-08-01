@@ -27,7 +27,7 @@ export async function generateProject(options:OptionValues){
             },
             {
                 type:'text',
-                initial:'ISC',
+                initial:'MIT',
                 name:'license',
                 message:'Enter project license:'
             },
@@ -49,15 +49,15 @@ export async function generateProject(options:OptionValues){
         if(fs.existsSync(path.join(process.cwd(),options.project))) throw new Error(`❌ Project directory "${options.project}" already exists!`)
         config = {
             name:options.project,
-            author:"",
-            description:"Node-INQ generated Node-RED node project",
-            license:"ISC",
+            author:"Node-INQ",
+            description:"Generated Node-RED project",
+            license:"MIT",
             typescript:options.typescript,
             template:options.template
         }
     }
     const dir = path.join(process.cwd(),config.name)
-    console.group('\n🥚 Generating Node-RED node project:')
+    console.group('\n🥚 Generating Node-RED project:')
     fs.mkdirSync(dir);
     console.log(`- Directory: ${dir} ✔️`)
     console.log(`- Language set to ${config.typescript?'"Typescript"':'"Javascript"'} ✔️`)
