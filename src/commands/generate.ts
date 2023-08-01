@@ -78,15 +78,15 @@ export async function generateProject(options:OptionValues){
         Object.assign(module.scripts,{build:"tsc"});
         fs.mkdirSync(path.join(dir,"src"));
     }
-    if(config.template){
-        config.typescript ? fs.writeFileSync(path.join(dir,'src','template.ts'),fs.readFileSync(path.join(__dirname,"..","..","nodes","template","node.ts"))) 
-        : fs.writeFileSync(path.join(dir,'nodes','template.js'),fs.readFileSync(path.join(__dirname,"..","..","nodes","template","node.js")));
-        fs.writeFileSync(path.join(dir,'nodes','template.html'),fs.readFileSync(path.join(__dirname,"..","..","nodes","template","node.html")));
-        Object.assign(module["node-red"].nodes,{template:"nodes/template.js"});
+    if(config.example){
+        config.typescript ? fs.writeFileSync(path.join(dir,'src','template.ts'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.ts"))) 
+        : fs.writeFileSync(path.join(dir,'nodes','example.js'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.js")));
+        fs.writeFileSync(path.join(dir,'nodes','example.html'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.html")));
+        Object.assign(module["node-red"].nodes,{example:"nodes/example.js"});
+        console.log(`- Imported example node! 🐣`);
     }
     fs.writeFileSync(path.join(dir,'package.json'),JSON.stringify(module,null,3));
     console.log(`- Created package.json! ✔️`);
-    if(config.template) console.log(`- Imported template node! 🐣`);
     const ignore = ".nodered\nnode_modules\nincubator\npackage-lock.json\nnodemon.json";
     fs.writeFileSync(path.join(dir,'.gitignore'),ignore);
     fs.writeFileSync(path.join(dir,'.npmignore'),ignore);
@@ -95,10 +95,11 @@ export async function generateProject(options:OptionValues){
     fs.mkdirSync(path.join(dir,"incubator"));
     console.log();
     console.group('📕 Node-RED Incubator setup:');
-    execSync(`npm --prefix ${dir} install express node-red`);
+    execSync(`npm --prefix ${dir} install -D express node-red nodemon`);
     console.log(`- Installed required modules! ✔️`);
     fs.writeFileSync(path.join(dir,'incubator','server.js'),fs.readFileSync(path.join(__dirname,'..','..','incubator','server.js')));
     fs.writeFileSync(path.join(dir,'incubator','settings.js'),fs.readFileSync(path.join(__dirname,'..','..','incubator','settings.js')));
+    fs.writeFileSync(path.join(dir,'nodemon.json'),fs.readFileSync(path.join(__dirname,'..','..','incubator','nodemon.json')));
     console.log(`- Created incubator server ✔️`)
     console.groupEnd();
     if(config.typescript){
@@ -125,7 +126,5 @@ export async function generateProject(options:OptionValues){
         console.log(`- Created "tsconfig.json"! ✔️`)
         console.groupEnd();
     }
-    execSync(`npm --prefix ${dir} install -D nodemon`);
-    fs.writeFileSync(path.join(dir,'nodemon.json'),fs.readFileSync(path.join(__dirname,'..','..','incubator','nodemon.json')));
-    console.log('\n✅ All done, project generated!\n🖖 Let the Flow be with you.');
+    console.log('\n✅ All done, project generated!\n🖖 Happy flow hacking.');
 }

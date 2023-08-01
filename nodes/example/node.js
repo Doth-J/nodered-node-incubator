@@ -1,6 +1,6 @@
 "use strict";
 module.exports = function (RED) {
-    function TemplateNode(config) {
+    function ExampleNode(config) {
         RED.nodes.createNode(this, config);
         this.on('input', (msg, send, done) => {
             msg.payload = "Hello from Template Node";
@@ -9,5 +9,5 @@ module.exports = function (RED) {
                 done();
         });
     }
-    RED.nodes.registerType('template', TemplateNode);
+    RED.nodes.registerType('example', ExampleNode);
 };

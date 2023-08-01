@@ -1,10 +1,10 @@
 import * as NodeRED from "node-red";
 
-interface TemplateNodeConfig extends NodeRED.NodeDef{}
+interface ExampleNodeConfig extends NodeRED.NodeDef{}
 
 export = function(RED:NodeRED.NodeAPI){
 
-    function TemplateNode(this:NodeRED.Node, config:TemplateNodeConfig){
+    function ExampleNode(this:NodeRED.Node, config:ExampleNodeConfig){
       RED.nodes.createNode(this,config);
       this.on('input',(msg:any,send,done)=>{
           msg.payload = "Hello from Template Node";
@@ -13,6 +13,6 @@ export = function(RED:NodeRED.NodeAPI){
       });
     }
 
-    RED.nodes.registerType('template',TemplateNode);
+    RED.nodes.registerType('example',ExampleNode);
       
 }

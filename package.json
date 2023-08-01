@@ -1,6 +1,6 @@
 {
   "name": "nodered-node-incubator",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Node-RED node project incubator",
   "main": "build/node-incubator.js",
   "scripts": {

@@ -1,5 +1,5 @@
-<script type="text/javascript" id="node-template">
-    RED.nodes.registerType('template',{
+<script type="text/javascript" id="node-example">
+    RED.nodes.registerType('example',{
         category:'exampleCategory',
         color:'#e2b784',
         inputs:1,
@@ -10,17 +10,17 @@
             name: {value:''},
         },
         label: function(){
-            return this.name || 'template'
+            return this.name || 'example'
         }
     });
 </script>
-<script type="text/html" data-template-name="template">
+<script type="text/html" data-template-name="example">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
-<script type="text/html" data-help-name="template">
+<script type="text/html" data-help-name="example">
     <p>Template Node-RED node</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
