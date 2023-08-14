@@ -80,7 +80,7 @@ export async function generateProject(options:OptionValues){
         fs.mkdirSync(path.join(dir,"src"));
     }
     if(config.example){
-        config.typescript ? fs.writeFileSync(path.join(dir,'src','template.ts'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.ts"))) 
+        config.typescript ? fs.writeFileSync(path.join(dir,'src','example.ts'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.ts"))) 
         : fs.writeFileSync(path.join(dir,'nodes','example.js'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.js")));
         fs.writeFileSync(path.join(dir,'nodes','example.html'),fs.readFileSync(path.join(__dirname,"..","..","nodes","example","node.html")));
         Object.assign(module["node-red"].nodes,{example:"nodes/example.js"});

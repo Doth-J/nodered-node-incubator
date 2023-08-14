@@ -55,7 +55,7 @@ function generateProject(options) {
                     type: 'confirm',
                     initial: false,
                     name: 'example',
-                    message: 'Import template node:'
+                    message: 'Import example node:'
                 }
             ];
             config = yield (0, prompts_1.default)(questions);
@@ -92,10 +92,11 @@ function generateProject(options) {
         };
         if (config.typescript) {
             Object.assign(module.scripts, { build: "tsc" });
+            Object.assign(module.scripts, { "dev:build": "nodemon --watch src -e ts --exec npm run build" });
             fs_1.default.mkdirSync(path_1.default.join(dir, "src"));
         }
         if (config.example) {
-            config.typescript ? fs_1.default.writeFileSync(path_1.default.join(dir, 'src', 'template.ts'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.ts")))
+            config.typescript ? fs_1.default.writeFileSync(path_1.default.join(dir, 'src', 'example.ts'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.ts")))
                 : fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'example.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.js")));
             fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'example.html'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.html")));
             Object.assign(module["node-red"].nodes, { example: "nodes/example.js" });
@@ -117,6 +118,8 @@ function generateProject(options) {
         fs_1.default.writeFileSync(path_1.default.join(dir, 'incubator', 'settings.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'settings.js')));
         fs_1.default.writeFileSync(path_1.default.join(dir, 'nodemon.json'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'nodemon.json')));
         console.log(`- Created incubator server ✔️`);
+        fs_1.default.writeFileSync(path_1.default.join(dir, 'README.md'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'README.md')));
+        console.log(`- Added README file for incubator ✔️`);
         console.groupEnd();
         if (config.typescript) {
             const tsconfig = {
