@@ -41,7 +41,7 @@ export async function generateProject(options:OptionValues){
                 type:'confirm',
                 initial: false,
                 name:'example',
-                message:'Import template node:'
+                message:'Import example node:'
             }
         ]
         config = await prompts(questions)

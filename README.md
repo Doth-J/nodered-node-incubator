@@ -105,7 +105,7 @@ node-inq nodes
   - Imported topic node! 🐥
 ``` 
 
-## Incubator :baby_bottle:
+## Incubator Server :baby_bottle:
 The tool creates an `incubator` folder containing a minimal Node-RED setup to get you started.
 Execute the following command to spin up your incubator server and fast track the development of your nodes:
 ```console

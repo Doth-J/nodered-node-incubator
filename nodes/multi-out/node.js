@@ -7,7 +7,7 @@ module.exports = function (RED) {
             for (let i = 0; i < config.outputs; i++) {
                 outputs.push({ payload: `message ${i + 1}` });
             }
-            send(...outputs);
+            send(outputs);
             if (done)
                 done();
         });

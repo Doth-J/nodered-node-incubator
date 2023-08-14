@@ -4,23 +4,16 @@
         color:'#e2b784',
         inputs:1,
         inputLabels: "an input message",
-        outputs:function(){
-            return this.outputs;
-        },
-        outputLabels: function(){
-            const outputs = [];
-            for(let i=0; i<this.outputs; i++){
-                outputs.push(`Message output ${i+1}`);
-            }
-        },
+        outputs:() => this.outputs,
+        outputLabels: (_) => `Message output ${_}`,
         defaults: {
             name: {value:''},
-            outputs: {value:''}
+            outputs: {value:1},
         },
-        onediteprepare:function(){
-            $("#node-input-outputs").typedInput({
-                type:"num",
-                typeField: "#node-input-outputs-type"
+        oneditprepare:function(){
+            $("#node-input-outputs").spinner({
+                min:0,
+                max:10
             })
         },
         label: function(){
@@ -34,9 +27,8 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-outputs"><i class="fa fa-cog"></i> Topic</label>
-        <input type="text" id="node-input-outputs" value="1">
-        <input type="hidden" id="node-input-outputs-type">
+        <label for="node-input-outputs"><i class="fa fa-cog"></i> Outputs</label>
+        <input type="text" id="node-input-outputs">
     </div>
 </script>
 <script type="text/html" data-help-name="multi-out">

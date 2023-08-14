@@ -7,7 +7,7 @@ export = function(RED:NodeRED.NodeAPI){
     function ExampleNode(this:NodeRED.Node, config:ExampleNodeConfig){
       RED.nodes.createNode(this,config);
       this.on('input',(msg:any,send,done)=>{
-          msg.payload = "Hello from Template Node";
+          msg.payload = "Hello from the Example Node";
           send(msg);
           if(done) done();
       });

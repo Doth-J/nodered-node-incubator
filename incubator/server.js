@@ -2,7 +2,6 @@ const http = require("http");
 const express = require("express");
 const RED = require("node-red");
 const settings = require('./settings');
-
 const app = express();
 const server = http.createServer(app);
 RED.init(server,settings);
