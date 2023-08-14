@@ -4,7 +4,7 @@ This project is generated using the [node-inq](https://github.com/Doth-J/nodered
 
 # Scripts Available 📜
 
-In the project directory, you have access to the following script:
+In the project directory, you have access to the following scripts:
 
 ### `npm run dev` ⚡
 Starts the development server in [localhost:1880](http://localhost:1880). The server runs using the `nodemon` global config file found in [nodemon.json](./nodemon.json). This can be reconfigured to include/exclude any extra files or resources needed to watch/ignore accordingly in order to restart the server, you can find more info [here](https://github.com/remy/nodemon#config-files). 
