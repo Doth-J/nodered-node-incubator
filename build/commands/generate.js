@@ -41,7 +41,7 @@ function generateProject(options) {
                 },
                 {
                     type: 'text',
-                    initial: 'ISC',
+                    initial: 'MIT',
                     name: 'license',
                     message: 'Enter project license:'
                 },
@@ -54,7 +54,7 @@ function generateProject(options) {
                 {
                     type: 'confirm',
                     initial: false,
-                    name: 'template',
+                    name: 'example',
                     message: 'Import template node:'
                 }
             ];
@@ -65,15 +65,15 @@ function generateProject(options) {
                 throw new Error(`❌ Project directory "${options.project}" already exists!`);
             config = {
                 name: options.project,
-                author: "",
-                description: "Node-INQ generated Node-RED node project",
-                license: "ISC",
+                author: "Node-INQ",
+                description: "Generated Node-RED project",
+                license: "MIT",
                 typescript: options.typescript,
                 template: options.template
             };
         }
         const dir = path_1.default.join(process.cwd(), config.name);
-        console.group('\n🥚 Generating Node-RED node project:');
+        console.group('\n🥚 Generating Node-RED project:');
         fs_1.default.mkdirSync(dir);
         console.log(`- Directory: ${dir} ✔️`);
         console.log(`- Language set to ${config.typescript ? '"Typescript"' : '"Javascript"'} ✔️`);
@@ -94,16 +94,15 @@ function generateProject(options) {
             Object.assign(module.scripts, { build: "tsc" });
             fs_1.default.mkdirSync(path_1.default.join(dir, "src"));
         }
-        if (config.template) {
-            config.typescript ? fs_1.default.writeFileSync(path_1.default.join(dir, 'src', 'template.ts'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "template", "node.ts")))
-                : fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'template.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "template", "node.js")));
-            fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'template.html'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "template", "node.html")));
-            Object.assign(module["node-red"].nodes, { template: "nodes/template.js" });
+        if (config.example) {
+            config.typescript ? fs_1.default.writeFileSync(path_1.default.join(dir, 'src', 'template.ts'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.ts")))
+                : fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'example.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.js")));
+            fs_1.default.writeFileSync(path_1.default.join(dir, 'nodes', 'example.html'), fs_1.default.readFileSync(path_1.default.join(__dirname, "..", "..", "nodes", "example", "node.html")));
+            Object.assign(module["node-red"].nodes, { example: "nodes/example.js" });
+            console.log(`- Imported example node! 🐣`);
         }
         fs_1.default.writeFileSync(path_1.default.join(dir, 'package.json'), JSON.stringify(module, null, 3));
         console.log(`- Created package.json! ✔️`);
-        if (config.template)
-            console.log(`- Imported template node! 🐣`);
         const ignore = ".nodered\nnode_modules\nincubator\npackage-lock.json\nnodemon.json";
         fs_1.default.writeFileSync(path_1.default.join(dir, '.gitignore'), ignore);
         fs_1.default.writeFileSync(path_1.default.join(dir, '.npmignore'), ignore);
@@ -112,10 +111,11 @@ function generateProject(options) {
         fs_1.default.mkdirSync(path_1.default.join(dir, "incubator"));
         console.log();
         console.group('📕 Node-RED Incubator setup:');
-        (0, child_process_1.execSync)(`npm --prefix ${dir} install express node-red`);
+        (0, child_process_1.execSync)(`npm --prefix ${dir} install -D express node-red nodemon`);
         console.log(`- Installed required modules! ✔️`);
         fs_1.default.writeFileSync(path_1.default.join(dir, 'incubator', 'server.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'server.js')));
         fs_1.default.writeFileSync(path_1.default.join(dir, 'incubator', 'settings.js'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'settings.js')));
+        fs_1.default.writeFileSync(path_1.default.join(dir, 'nodemon.json'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'nodemon.json')));
         console.log(`- Created incubator server ✔️`);
         console.groupEnd();
         if (config.typescript) {
@@ -142,9 +142,7 @@ function generateProject(options) {
             console.log(`- Created "tsconfig.json"! ✔️`);
             console.groupEnd();
         }
-        (0, child_process_1.execSync)(`npm --prefix ${dir} install -D nodemon`);
-        fs_1.default.writeFileSync(path_1.default.join(dir, 'nodemon.json'), fs_1.default.readFileSync(path_1.default.join(__dirname, '..', '..', 'incubator', 'nodemon.json')));
-        console.log('\n✅ All done, project generated!\n🖖 Let the Flow be with you.');
+        console.log('\n✅ All done, project generated!\n🖖 Happy flow hacking.');
     });
 }
 exports.generateProject = generateProject;

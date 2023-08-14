@@ -40,7 +40,7 @@ export async function generateProject(options:OptionValues){
             {
                 type:'confirm',
                 initial: false,
-                name:'template',
+                name:'example',
                 message:'Import template node:'
             }
         ]
@@ -76,6 +76,7 @@ export async function generateProject(options:OptionValues){
     };
     if(config.typescript){
         Object.assign(module.scripts,{build:"tsc"});
+        Object.assign(module.scripts,{"dev:build":"nodemon --watch src -e ts --exec npm run build"});
         fs.mkdirSync(path.join(dir,"src"));
     }
     if(config.example){
@@ -101,6 +102,8 @@ export async function generateProject(options:OptionValues){
     fs.writeFileSync(path.join(dir,'incubator','settings.js'),fs.readFileSync(path.join(__dirname,'..','..','incubator','settings.js')));
     fs.writeFileSync(path.join(dir,'nodemon.json'),fs.readFileSync(path.join(__dirname,'..','..','incubator','nodemon.json')));
     console.log(`- Created incubator server ✔️`)
+    fs.writeFileSync(path.join(dir,'README.md'),fs.readFileSync(path.join(__dirname,'..','..','incubator','README.md')));
+    console.log(`- Added README file for incubator ✔️`)
     console.groupEnd();
     if(config.typescript){
         const tsconfig = {
